@@ -1,0 +1,37 @@
+<div class="container d-flex align-items-center justify-content-center vh-100">
+    <form [formGroup]="loginForm" class="form-container p-4 rounded shadow bg-light w-50">
+        <div class="row justify-content-center">
+            <div class="col text-center">
+                <h2 class="form-title">User Form</h2>
+            </div>
+        </div>
+        
+        <div class="form-group mt-3">
+            <label for="userName">Enter your name</label>
+            <input id="userName" type="text" formControlName="userName" class="form-control" placeholder="Name">
+            <div *ngIf="loginForm.get('userName')?.invalid && loginForm.get('userName')?.touched" class="text-danger mt-2">
+                <div *ngIf="loginForm.get('userName')?.errors?.['required']">
+                    Name should not be empty.
+                </div>
+            </div>
+        </div>
+
+    
+
+        <div class="form-group mt-3">
+            <label for="password">Enter your Password</label>
+            <input id="password" type="password" formControlName="password" class="form-control" placeholder="Password">
+            <div *ngIf="loginForm.get('password')?.invalid && loginForm.get('password')?.touched" class="text-danger mt-2">
+                <div *ngIf="loginForm.get('password')?.errors?.['required']">
+                    Password should not be empty.
+                </div>
+               
+            </div>
+        </div>
+
+        <div class="form-group mt-4 text-center">
+            <button (click)="onLogin()" type="submit" [disabled]="loginForm.invalid" class="btn btn-danger mx-2">Login</button>
+            <button (click)="signUp()" type="button" class="btn btn-secondary mx-2">SignUp?</button>
+        </div>
+    </form>
+</div>
